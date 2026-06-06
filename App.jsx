@@ -96,48 +96,11 @@ function gerarHistorico(funcId, modalidade){
 }
 
 const FUNCIONARIOS=[
-  { id:1, nome:"FABRICIO FERREIRA", empresa:"ILUMI INDUSTRIA E COMERCIO LTDA", cargo:"AUXILIAR ADMINISTRATIVO", modalidade:"12x36-noturno", senha:"1234", perfil:"funcionario" },
-  { id:6, nome:"ADMINISTRADOR RH",        empresa:"DRIP PLAN IND. E COM. DE EQUIPAMENTOS P/ IRRIGAÇÃO LTDA", cargo:"GESTOR DE RECURSOS HUMANOS", modalidade:"8h-diurno", senha:"admin", perfil:"admin" },
+  { id:1, nome:"CARREGANDO...", empresa:"", cargo:"", modalidade:"12x36-noturno", senha:"", perfil:"funcionario" },
+  { id:6, nome:"ADMINISTRADOR RH", empresa:"ILUMI INDUSTRIA E COMERCIO LTDA", cargo:"GESTOR DE RECURSOS HUMANOS", modalidade:"8h-diurno", senha:"admin", perfil:"admin" },
 ];
 
-// Dados reais FABRICIO FERREIRA — importados do RHiD em 05/06/2026
-// HIST corrigido: cada registro = 1 turno completo pelo dia da ENTRADA (17h)
-// Formato: e1=entrada(~17h) • s1=saída janta(~22h) • e2=volta janta(~23h) • s2=saída(~05h dia seguinte)
-const HIST={
-  1: [
-    // Turno 03/06 — entrou 03/06 às 16:56, saída ainda não registrada
-    {data:"2026-06-03",e1:"16:56",s1:"23:11",e2:"",s2:"",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 02/06 — entrou 02/06, saiu 03/06 às 05:02
-    {data:"2026-06-02",e1:"16:56",s1:"22:41",e2:"23:38",s2:"05:02",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 01/06 — entrou 01/06 às 16:59, saiu 02/06 às 05:07
-    {data:"2026-06-01",e1:"16:59",s1:"22:43",e2:"23:42",s2:"05:07",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 28/05 — entrou 28/05, saiu 29/05 às 05:01 (incompleto — só entrada e saída)
-    {data:"2026-05-28",e1:"16:55",s1:"22:35",e2:"23:32",s2:"05:01",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 27/05 — entrou 27/05, saiu 28/05 às 05:15
-    {data:"2026-05-27",e1:"16:58",s1:"22:52",e2:"23:45",s2:"05:15",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 26/05 — entrou 26/05, saiu 27/05 às 05:02
-    {data:"2026-05-26",e1:"16:55",s1:"22:46",e2:"23:45",s2:"05:02",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 25/05 — entrou 25/05 às 16:53, saiu 26/05 às 05:00
-    {data:"2026-05-25",e1:"16:53",s1:"22:40",e2:"23:40",s2:"05:00",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 21/05 — entrou 21/05, saiu 22/05 às 05:00 (incompleto)
-    {data:"2026-05-21",e1:"16:52",s1:"22:51",e2:"23:46",s2:"05:00",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 20/05 — entrou 20/05, saiu 21/05 às 05:05
-    {data:"2026-05-20",e1:"16:55",s1:"22:42",e2:"23:40",s2:"05:05",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 19/05 — entrou 19/05, saiu 20/05 às 05:00
-    {data:"2026-05-19",e1:"16:52",s1:"22:54",e2:"23:49",s2:"05:00",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 18/05 — entrou 18/05 às 16:53, saiu 19/05 às 05:13
-    {data:"2026-05-18",e1:"16:53",s1:"22:41",e2:"23:40",s2:"05:13",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 14/05 — entrou 14/05, saiu 15/05 às 05:00
-    {data:"2026-05-14",e1:"16:53",s1:"22:42",e2:"23:42",s2:"05:00",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 13/05 — entrou 13/05, saiu 14/05 às 05:04
-    {data:"2026-05-13",e1:"16:55",s1:"22:44",e2:"23:40",s2:"05:04",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 12/05 — entrou 12/05, saiu 13/05 às 05:11
-    {data:"2026-05-12",e1:"16:52",s1:"22:42",e2:"23:40",s2:"05:01",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-    // Turno 11/05 — entrou 11/05 às 17:15, saiu 12/05 às 05:01
-    {data:"2026-05-11",e1:"17:15",s1:"22:49",e2:"23:49",s2:"05:01",saidaPrev:"05:00",modalidade:"12x36-noturno"},
-  ],
-  6:[]
-};
+const HIST={ 1:[], 6:[] };
 
 // ── Paleta corporativa ────────────────────────────────────
 const A="#2E8B9A", A2="#236878";
@@ -487,7 +450,8 @@ function Header({titulo,onMenu,notifs,onBell,bellOpen,onCloseBell,onLer,onLerTod
 // ══════════════════════════════════════════════════════
 //  SERVIDOR INTERMEDIÁRIO RHiD
 // ══════════════════════════════════════════════════════
-const SERVIDOR_URL = "https://pontoweb-server.onrender.com";
+const SERVIDOR_URL = ""; // proxy via vercel.json → repp.rhid.com.br
+const RHID_CID = "81212"; // X-Cid-Rhid da empresa
 
 // ══════════════════════════════════════════════════════
 //  TELA DE LOGIN — com acesso direto ao RHiD
@@ -523,26 +487,31 @@ function TelaLogin({onLogin}){
 
     if(modoLogin==="rhid"){
       try{
-        const res=await fetch(`${SERVIDOR_URL}/api/rhid/login`,{
+        const res=await fetch(`/api/rhid/login`,{
           method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({email,senha})
+          headers:{
+            "Content-Type":"application/json",
+            "X-Cid-Rhid": RHID_CID
+          },
+          body:JSON.stringify({login:email, senha})
         });
         const data=await res.json();
-        if(!res.ok||!data.token){
+        if(!res.ok||(!data.token&&!data.access_token)){
           setErro("E-mail ou senha do RHiD incorretos. Tente novamente.");
           setCarregando(false);
           return;
         }
+        const token = data.token||data.access_token;
+        salvarEmailHistorico(email);
         onLogin({
           id:1,
-          nome:"FABRICIO FERREIRA",
+          nome: data.nome||data.name||"FABRICIO FERREIRA",
           email,
           empresa:"ILUMI INDUSTRIA E COMERCIO LTDA",
           cargo:"AUXILIAR ADMINISTRATIVO",
           modalidade:"12x36-noturno",
           perfil:"funcionario",
-          rhidToken:data.token
+          rhidToken: token
         });
       }catch(e){
         setErro("Erro ao conectar. Verifique sua internet.");
@@ -709,16 +678,17 @@ function TelaLogin({onLogin}){
               if(!emailVal||!senhaVal){setErro("Preencha e-mail e senha.");return;}
               setCarregando(true); setErro("");
               if(modoLogin==="rhid"){
-                fetch(`${SERVIDOR_URL}/api/rhid/login`,{
+                fetch(`/api/rhid/login`,{
                   method:"POST",
-                  headers:{"Content-Type":"application/json"},
-                  body:JSON.stringify({email:emailVal,senha:senhaVal})
+                  headers:{"Content-Type":"application/json","X-Cid-Rhid":RHID_CID},
+                  body:JSON.stringify({login:emailVal,senha:senhaVal})
                 }).then(r=>r.json()).then(data=>{
-                  if(!data.token){setErro("E-mail ou senha do RHiD incorretos.");setCarregando(false);return;}
+                  const token=data.token||data.access_token;
+                  if(!token){setErro("E-mail ou senha do RHiD incorretos.");setCarregando(false);return;}
                   salvarEmailHistorico(emailVal);
-                  onLogin({id:1,nome:"FABRICIO FERREIRA",email:emailVal,
-                    empresa:"ILUMI INDUSTRIA E COMERCIO LTDA",cargo:"AUXILIAR ADMINISTRATIVO",
-                    modalidade:"12x36-noturno",perfil:"funcionario",rhidToken:data.token});
+                  onLogin({id:1,nome:data.nome||data.name||emailVal,email:emailVal,
+                    empresa:data.empresa||"",cargo:data.cargo||"",
+                    modalidade:"12x36-noturno",perfil:"funcionario",rhidToken:token});
                 }).catch(()=>{setErro("Erro ao conectar. Verifique sua internet.");setCarregando(false);});
               } else {
                 if(emailVal==="admin@empresa.com"&&senhaVal==="admin"){
@@ -944,7 +914,71 @@ export default function App(){
     window.history.replaceState({tela},"");
   },[tela]);
 
-  // ── RHiD: polling a cada 30s para marcações em tempo real ──────
+  // ── Busca dados do funcionário e histórico após login RHiD ──
+  useEffect(()=>{
+    if(!userLogado?.rhidToken) return;
+    const token=userLogado.rhidToken;
+
+    // 1. Busca dados cadastrais do funcionário
+    const buscarPerfil=async()=>{
+      try{
+        const res=await fetch(`/api/rhid/funcionario`,{
+          headers:{"Authorization":`Bearer ${token}`,"X-Cid-Rhid":RHID_CID}
+        });
+        if(res.ok){
+          const d=await res.json();
+          const nome=(d.nome||d.name||userLogado.nome||"").toUpperCase();
+          const empresa=(d.empresa||d.company||"").toUpperCase();
+          const cargo=(d.cargo||d.role||"").toUpperCase();
+          const modalidade=d.modalidade||d.jornada||"12x36-noturno";
+          FUNCIONARIOS[0]={...FUNCIONARIOS[0],nome,empresa,cargo,modalidade};
+          setFuncSel(1);
+        }
+      }catch{}
+    };
+
+    // 2. Busca histórico de pontos dos últimos 60 dias
+    const buscarHistorico=async()=>{
+      try{
+        const fim=hoje();
+        const ini=addDias(fim,-60);
+        const res=await fetch(`/api/rhid/ponto_diario?inicio=${ini}&fim=${fim}`,{
+          headers:{"Authorization":`Bearer ${token}`,"X-Cid-Rhid":RHID_CID}
+        });
+        if(!res.ok) return;
+        const dados=await res.json();
+        if(!dados||!dados.length) return;
+
+        // Agrupa batidas por turno — entrada ~17h, saída ~05h do dia seguinte
+        const turnos={};
+        const batidas=[...dados].sort((a,b)=>(a.data_hora||"").localeCompare(b.data_hora||""));
+
+        batidas.forEach(m=>{
+          const dtHora=m.data_hora||"";
+          const hora=dtHora.slice(11,16);
+          const hNum=parseInt(hora.slice(0,2));
+          // Se hora < 12h = saída noturna = pertence ao dia ANTERIOR
+          const dtBase=dtHora.slice(0,10);
+          const chave= hNum < 12 ? addDias(dtBase,-1) : dtBase;
+
+          if(!turnos[chave]) turnos[chave]={data:chave,e1:"",s1:"",e2:"",s2:"",saidaPrev:"05:00",modalidade:"12x36-noturno"};
+          const t=turnos[chave];
+          if(!t.e1) t.e1=hora;
+          else if(!t.s1) t.s1=hora;
+          else if(!t.e2) t.e2=hora;
+          else if(!t.s2) t.s2=hora;
+        });
+
+        const lista=Object.values(turnos).sort((a,b)=>b.data.localeCompare(a.data));
+        setRegs(p=>({...p,1:lista}));
+        setRhidConectado(true);
+        setRhidSincMens(`Última sync: ${new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}`);
+      }catch(e){ console.error("Erro ao buscar histórico:",e); }
+    };
+
+    buscarPerfil();
+    buscarHistorico();
+  },[userLogado?.rhidToken]);
   useEffect(()=>{
     if(!rhidToken) return;
     const buscarMarcacoes=async()=>{
@@ -953,8 +987,8 @@ export default function App(){
         // Busca marcações do dia atual
         const dataHoje=hoje();
         const res=await fetch(
-          `${SERVIDOR_URL}/api/rhid/marcacoes?token=${rhidToken}&inicio=${dataHoje}&fim=${dataHoje}`,
-          { headers:{ "Authorization":`Bearer ${rhidToken}`, "Content-Type":"application/json" } }
+          `/api/rhid/ponto_diario?inicio=${dataHoje}&fim=${dataHoje}`,
+          { headers:{ "Authorization":`Bearer ${rhidToken}`, "Content-Type":"application/json", "X-Cid-Rhid": RHID_CID } }
         );
         if(!res.ok){ setRhidConectado(false); setRhidSincMens("Erro de conexão"); return; }
         const dados=await res.json();
@@ -997,14 +1031,14 @@ export default function App(){
   const loginRhid=async(email,senha)=>{
     try{
       setRhidSincMens("Conectando ao RHiD...");
-      const res=await fetch(`${SERVIDOR_URL}/api/rhid/login`,{
+      const res=await fetch(`/api/rhid/login`,{
         method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({email,senha})
+        headers:{"Content-Type":"application/json","X-Cid-Rhid":RHID_CID},
+        body:JSON.stringify({login:email,senha})
       });
       if(!res.ok){ msg("E-mail ou senha incorretos. Verifique e tente novamente.","err"); setRhidSincMens(""); return; }
       const data=await res.json();
-      const token=data.token;
+      const token=data.token||data.access_token;
       if(!token){ msg("Erro ao conectar. Tente novamente.","err"); return; }
       setRhidToken(token);
       setRhidConectado(true);
