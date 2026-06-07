@@ -487,7 +487,7 @@ function TelaLogin({onLogin}){
 
     if(modoLogin==="rhid"){
       try{
-        const res=await fetch(`${SERVIDOR_URL}/api/rhid/login`,{
+        const res=await fetch(${SERVIDOR_URL}/api/rhid/login.svc,{
           method:"POST",
           headers:{
             "Content-Type":"application/json",
