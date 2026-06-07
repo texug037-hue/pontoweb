@@ -678,7 +678,7 @@ function TelaLogin({onLogin}){
               if(!emailVal||!senhaVal){setErro("Preencha e-mail e senha.");return;}
               setCarregando(true); setErro("");
               if(modoLogin==="rhid"){
-                fetch(`${SERVIDOR_URL}/api/rhid/login`,{
+                fetch(`${SERVIDOR_URL}/api/rhid/login.svc`,{
                   method:"POST",
                   headers:{"Content-Type":"application/json","X-Cid-Rhid":RHID_CID},
                   body:JSON.stringify({email:emailVal,senha:senhaVal,login:emailVal})
@@ -1031,7 +1031,7 @@ export default function App(){
   const loginRhid=async(email,senha)=>{
     try{
       setRhidSincMens("Conectando ao RHiD...");
-      const res=await fetch(`${SERVIDOR_URL}/api/rhid/login`,{
+      const res=await fetch(`${SERVIDOR_URL}/api/rhid/login.svc`,{
         method:"POST",
         headers:{"Content-Type":"application/json","X-Cid-Rhid":RHID_CID},
         body:JSON.stringify({login:email,email,senha})
